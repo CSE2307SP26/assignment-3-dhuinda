@@ -20,7 +20,7 @@ while read -r WUSTL_KEY; do #redirection
 
     if [ -z "$LAST" ]; then
         #student did not turn in commit before deadline 
-        echo "${WUSTL_KEY}: 0"
+        echo "${WUSTL_KEY} 0"
         cd .. && rm -rf "$WUSTL_KEY"
         continue
     fi
@@ -37,15 +37,15 @@ while read -r WUSTL_KEY; do #redirection
             #diff expected vs actual 
             diff -q "$ACTUAL_FILE_NAME" "../$EXPECTED_FILE" > /dev/null
             if [ $? -eq 0 ]; then
-                echo "${WUSTL_KEY}: 1"
+                echo "${WUSTL_KEY} 1"
             else
-                echo "${WUSTL_KEY}: 0"
+                echo "${WUSTL_KEY} 0"
             fi
         else
-            echo "${WUSTL_KEY}: 0" #file does not exist
+            echo "${WUSTL_KEY} 0" #file does not exist
         fi
     else
-        echo "${WUSTL_KEY}: 0"
+        echo "${WUSTL_KEY} 0"
     fi
 
     cd ..
